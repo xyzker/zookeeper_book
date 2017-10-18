@@ -1,6 +1,5 @@
 package book.chapter05.$5_3_2;
 
-import java.util.concurrent.CountDownLatch;
 import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
@@ -9,6 +8,8 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 
+import java.util.concurrent.CountDownLatch;
+
 // ZooKeeper API创建节点，使用异步(async)接口。
 public class ZooKeeper_Create_API_ASync_Usage implements Watcher {
 
@@ -16,7 +17,7 @@ public class ZooKeeper_Create_API_ASync_Usage implements Watcher {
 
     public static void main(String[] args) throws Exception{
         
-	 ZooKeeper zookeeper = new ZooKeeper("10.11.130.240:2181,10.11.79.217:2181,10.11.79.218:2181",
+	 ZooKeeper zookeeper = new ZooKeeper("10.110.25.197:2181,10.110.25.196:2181,10.110.25.198:2181",
 				5000, //
 				new ZooKeeper_Create_API_ASync_Usage());
 	 connectedSemaphore.await();
