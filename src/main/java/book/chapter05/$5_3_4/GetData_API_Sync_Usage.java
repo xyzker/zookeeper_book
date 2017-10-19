@@ -1,5 +1,4 @@
 package book.chapter05.$5_3_4;
-import java.util.concurrent.CountDownLatch;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -8,6 +7,8 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
+
+import java.util.concurrent.CountDownLatch;
 
 // ZooKeeper API 获取节点数据内容，使用同步(sync)接口。
 public class GetData_API_Sync_Usage implements Watcher {
@@ -19,7 +20,7 @@ public class GetData_API_Sync_Usage implements Watcher {
     public static void main(String[] args) throws Exception {
 
     	String path = "/zk-book";
-    	zk = new ZooKeeper("10.11.130.240:2181,10.11.79.217:2181,10.11.79.218:2181",
+    	zk = new ZooKeeper("10.110.25.197:2181,10.110.25.196:2181,10.110.25.198:2181",
 				5000, //
 				new GetData_API_Sync_Usage());
         connectedSemaphore.await();
