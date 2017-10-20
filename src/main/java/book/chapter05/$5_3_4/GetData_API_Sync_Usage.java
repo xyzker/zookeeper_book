@@ -1,10 +1,8 @@
 package book.chapter05.$5_3_4;
-import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
-import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
@@ -24,7 +22,7 @@ public class GetData_API_Sync_Usage implements Watcher {
 				5000, //
 				new GetData_API_Sync_Usage());
         connectedSemaphore.await();
-        zk.create( path, "123".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL );
+        //zk.create( path, "123".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL );
         
         System.out.println(new String(zk.getData( path, true, stat )));
         System.out.println(stat.getCzxid()+","+stat.getMzxid()+","+stat.getVersion());

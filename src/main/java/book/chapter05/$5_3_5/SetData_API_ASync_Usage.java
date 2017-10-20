@@ -1,14 +1,13 @@
 package book.chapter05.$5_3_5;
-import java.util.concurrent.CountDownLatch;
 import org.apache.zookeeper.AsyncCallback;
-import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
-import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
+
+import java.util.concurrent.CountDownLatch;
 
 // ZooKeeper API 更新节点数据内容，使用异步(async)接口。
 public class SetData_API_ASync_Usage implements Watcher {
@@ -19,12 +18,12 @@ public class SetData_API_ASync_Usage implements Watcher {
     public static void main(String[] args) throws Exception {
 
     	String path = "/zk-book";
-    	zk = new ZooKeeper("10.11.130.240:2181,10.11.79.217:2181,10.11.79.218:2181",
+    	zk = new ZooKeeper("10.110.25.197:2181,10.110.25.196:2181,10.110.25.198:2181",
 				5000, //
 				new SetData_API_ASync_Usage());
     	connectedSemaphore.await();
 
-    	zk.create( path, "123".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL );
+    	//zk.create( path, "123".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL );
     	zk.setData( path, "456".getBytes(), -1, new IStatCallback(), null );
     	
     	Thread.sleep( Integer.MAX_VALUE );
