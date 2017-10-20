@@ -12,7 +12,7 @@ public class PathChildrenCache_Sample {
 
     static String path = "/zk-book";
     static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("10.11.130.240:2181,10.11.79.217:2181,10.11.79.218:2181")
+            .connectString("10.110.25.197:2181,10.110.25.196:2181,10.110.25.198:2181")
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
             .sessionTimeoutMs(5000)
             .build();
@@ -38,7 +38,7 @@ public class PathChildrenCache_Sample {
 				}
 			}
 		});
-		client.create().withMode(CreateMode.PERSISTENT).forPath(path);
+		//client.create().withMode(CreateMode.PERSISTENT).forPath(path);
 		Thread.sleep( 1000 );
 		client.create().withMode(CreateMode.PERSISTENT).forPath(path+"/c1");
 		Thread.sleep( 1000 );
